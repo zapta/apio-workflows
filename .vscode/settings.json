@@ -9,6 +9,7 @@
         "isinstance",
         "nullglob",
         "shopt",
+        "softprops",
         "splitlines",
         "tonumber",
         "tostring"
