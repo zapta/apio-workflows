@@ -49,20 +49,23 @@ for repo in "${REPOS[@]}"; do
 
 done
 
+# Back to parent dir.
 popd
 
 echo 
 echo ---
 echo
+
+# Show cloned sizes
 echo "Local repos:"
 du -shc "${TARGET_DIR}"/*
 
 echo
 
+# Create an archive file with all repos.
 echo "Archive:"
 tar -czf "${TARGET_DIR}.tar.gz" "${TARGET_DIR}/"
 du -sh "${TARGET_DIR}.tar.gz"
-
 
 echo
 echo "Done."
