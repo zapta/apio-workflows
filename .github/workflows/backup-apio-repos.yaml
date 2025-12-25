@@ -81,6 +81,8 @@ jobs:
 
       - name: Cleanup old pre-releases
         uses: fpgawars/apio-workflows/.github/actions/cleanup-old-prereleases@main
+        with:
+          pre-release-keep-count: 20
 
       - name: Ensure no conflicting release (again)
         uses: fpgawars/apio-workflows/.github/actions/ensure-no-conflicting-release@main
