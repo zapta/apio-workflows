@@ -1,9 +1,9 @@
 name: backup-apio-repos
 
 on:
-  # Runs daily at UTC midnight.
   schedule:
-    - cron: "0 0 * * *"
+    # Runs weekly at midnight UTC on Sunday (the night between Saturday and Sunday)
+    - cron: "0 0 * * 0"
 
   # Allow manual activations.
   workflow_dispatch:
