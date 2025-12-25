@@ -53,7 +53,7 @@ jobs:
           [ -z "$file" ] && echo "No archive file found" && exit 1
 
           echo "ARCHIVE_FILE=$file"
-          echo "ARCHIVE_FILE=$file" >> "$GITHUB_OUTPUT"
+          echo "ARCHIVE_FILE=$file" >> "$GITHUB_ENV"
 
           # Get size in bytes (Linux-specific)
           size=$(stat -c %s "$file")
