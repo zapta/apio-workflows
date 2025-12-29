@@ -1,6 +1,11 @@
 name: Create GitHub Pre-release
-description: Creates a GitHub pre-release with the specified tag, optional body from a file path, and exactly the provided files
+description: >-
+  Creates a GitHub pre-release with the specified tag,
+  optional release notes from a file,
+  and exactly the provided files as assets.
 
+  Fails if a release with the tag already exists
+  (whether pre-release or stable) to prevent duplicates.
 inputs:
   release_tag:
     description: Tag name for the release (e.g. v1.2.3-rc.1)
@@ -30,6 +35,22 @@ runs:
         else
           echo "::error ::The specified body_path file '$body_path' does not exist."
           exit 1
+        fi
+
+    - name: Check if release already exists
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        release_tag="${{ inputs.release_tag }}"
+
+        echo "Checking if release with tag '$release_tag' already exists..."
+
+        if gh release view "$release_tag" > /dev/null 2>&1; then
+          echo "::error ::A release with tag '$release_tag' already exists. Aborting to prevent duplicate."
+          exit 1
+        else
+          echo "No existing release found for tag '$release_tag'. Proceeding..."
         fi
 
     - name: Create pre-release

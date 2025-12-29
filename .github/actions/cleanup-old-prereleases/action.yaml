@@ -6,7 +6,7 @@ description: >-
 
 inputs:
   pre-release-keep-count:
-    description: >
+    description: >-
       Number of newest pre-releases to keep (excluding the absolute latest).
       Set to 0 to delete all pre-releases except the latest.
     default: "5"
