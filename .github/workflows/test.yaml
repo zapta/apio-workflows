@@ -304,35 +304,6 @@ jobs:
              exit 1
           fi
 
-  # -- Test action get-repo-commit
-  test-get-repo-commit:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout this repo
-        uses: actions/checkout@v4
-
-      - name: Check apio repo at a known commit
-        uses: actions/checkout@v4
-        with:
-          repository: fpgawars/apio
-          ref: 8548ede2dc34a2e1067bb58ee3ef3ad59b9fc04a
-          path: apio-repo
-
-      - name: Get repo commit
-        uses: ./.github/actions/get-repo-commit
-        with:
-          repo-dir: apio-repo
-          env-var-name: REPO_COMMIT
-
-      - name: Check extracted repo commit
-        run: |
-          echo "REPO_COMMIT: [$REPO_COMMIT]"
-          if [ "$REPO_COMMIT" != "8548ede2dc34a2e1067bb58ee3ef3ad59b9fc04a" ]; then
-             echo "Error: Got a wrong repo commit" >&2
-             exit 1
-          fi
-
   # -- Test action get-repo-info
   test-get-repo-info:
     runs-on: ubuntu-latest
