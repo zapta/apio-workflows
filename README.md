@@ -13,3 +13,9 @@ repositories.
 outside of the fpgawars Apio ecosystem. Compatibility and correctness are
 maintained only with respect to official Apio repositories, and external
 projects that depend on this code may break at any time.
+
+## License
+
+The Apio project itself is licensed under the GNU General Public License version 3.0 (GPL-3.0).
+Pre-built packages may include third-party tools and components, which are subject to their
+respective license terms.
